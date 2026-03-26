@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Livro</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+
+  <body>
+    <header>
+      <a th:href="@{/}">
+        <h1>Gigi's BookStore</h1>
+      </a>
+
+      <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/livros}">Recomendações</a>
+        <a th:href="@{/cadastro}">Cadastrar Livro</a>
+      </nav>
+    </header>
+
+    <main class="livros">
+      <div class="livro-container">
+        <div class="detalhe-container">
+          <img th:src="${livro.imagem}" />
+
+          <div class="detalhe-info">
+            <h2>Detalhes do Livro</h2>
+
+            <p>
+              <strong>Título:</strong> <span th:text="${livro.titulo}"></span>
+            </p>
+            <p>
+              <strong>Autor:</strong> <span th:text="${livro.autor}"></span>
+            </p>
+            <p>
+              <strong>Gênero:</strong> <span th:text="${livro.genero}"></span>
+            </p>
+            <p>
+              <strong>Quantidade de páginas:</strong>
+              <span th:text="${livro.paginas}"></span>
+            </p>
+          </div>
+        </div>
+        <div class="sinopse-container">
+          <h2>Sinopse</h2>
+          <p th:text="${livro.sinopse}"></p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
+    </footer>
+  </body>
+</html>

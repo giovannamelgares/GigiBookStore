@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Livro</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+
+  <body>
+    <header>
+      <a th:href="@{/}">
+        <h1>Gigi's BookStore</h1>
+      </a>
+
+      <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/livros}">Recomendações</a>
+        <a th:href="@{/cadastro}">Cadastrar Livro</a>
+      </nav>
+    </header>
+
+    <main class="form">
+      <h2>Cadastrar novo livro</h2>
+
+      <form th:action="@{/livro}" method="post" th:object="${livro}">
+        <label>Título</label>
+        <input type="text" th:field="*{titulo}" placeholder="Digite o título" />
+
+        <label>Autor</label>
+        <input type="text" th:field="*{autor}" placeholder="Digite o autor" />
+
+        <label>Gênero</label>
+        <input type="text" th:field="*{genero}" placeholder="Ex: Romance" />
+
+        <label>Páginas</label>
+        <input
+          type="number"
+          th:field="*{paginas}"
+          placeholder="Quantidade de páginas"
+        />
+
+        <label>Imagem (URL)</label>
+        <input type="text" th:field="*{imagem}" placeholder="Link da imagem" />
+
+        <label>Sinopse</label>
+        <textarea
+          rows="5"
+          th:field="*{sinopse}"
+          placeholder="Digite a sinopse do livro"
+        ></textarea>
+
+        <div class="botoes-form">
+          <button type="submit">Adicionar Livro</button>
+          <button type="reset">Limpar</button>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
+    </footer>
+  </body>
+</html>

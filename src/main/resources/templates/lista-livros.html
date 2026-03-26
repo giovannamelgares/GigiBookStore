@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livros Recomendados</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+
+  <body>
+    <header>
+      <a th:href="@{/}">
+        <h1>Gigi's BookStore</h1>
+      </a>
+
+      <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/livros}">Recomendações</a>
+        <a th:href="@{/cadastro}">Cadastrar Livro</a>
+      </nav>
+    </header>
+
+    <main class="livros">
+      <h2>Livros Recomendados</h2>
+
+      <div class="container-livros">
+        <div th:each="livro : ${livros}">
+          <a th:href="@{/livro/{id}(id=${livro.id})}" class="card-livro">
+            <img th:src="${livro.imagem}" />
+
+            <h3 th:text="${livro.titulo}"></h3>
+
+            <p><span th:text="${livro.autor}"></span></p>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
+    </footer>
+  </body>
+</html>

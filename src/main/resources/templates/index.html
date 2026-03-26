@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gigi's Bookstore</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+
+  <body>
+    <header>
+      <a th:href="@{/}">
+        <h1>Gigi's BookStore</h1>
+      </a>
+
+      <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/livros}">Recomendações</a>
+        <a th:href="@{/cadastro}">Cadastrar Livro</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="banner">
+        <h2>Bem-vindo(a) à Gigi's BookStore</h2>
+        <p>
+          Um espaço feito para quem ama livros e boas histórias. Aqui você pode
+          descobrir novas leituras, compartilhar recomendações e explorar
+          diferentes gêneros como romance, fantasia, aventura e muito mais.
+        </p>
+      </section>
+
+      <section th:if="${livros.size() > 0}">
+        <h2>Recomendações em Destaque</h2>
+
+        <div class="container-livros">
+          <div th:each="livro : ${livros}">
+            <a th:href="@{/livro/{id}(id=${livro.id})}" class="card-livro">
+              <img th:src="${livro.imagem}" />
+
+              <h3 th:text="${livro.titulo}"></h3>
+
+              <p><span th:text="${livro.autor}"></span></p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div>
+          <h2>Descubra sua próxima leitura</h2>
+          <p>
+            Explore as recomendações cadastradas e encontre livros que combinam
+            com o seu gosto.
+          </p>
+
+          <a th:href="@{/livros}">
+            <button>Ver Recomendações</button>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div>
+          <h2>Compartilhe suas leituras favoritas</h2>
+          <p>
+            Adicione novos livros e ajude outras pessoas a descobrirem histórias
+            incríveis.
+          </p>
+
+          <a th:href="@{/cadastro}">
+            <button>Cadastrar Livro</button>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
+    </footer>
+  </body>
+</html>
