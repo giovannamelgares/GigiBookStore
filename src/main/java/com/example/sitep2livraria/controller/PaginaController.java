@@ -55,4 +55,22 @@ public class PaginaController {
         model.addAttribute("livro", livro);
         return "detalhe-livro";
     }
+
+    @GetMapping("/livro/{id}/editar")
+    public String formAtualizar(@PathVariable("id") String uuid, Model model) {
+        LivroService ls = context.getBean(LivroService.class);
+        Livro livroId = ls.mostrarLivro(uuid);
+        model.addAttribute("livro", livroId);
+        model.addAttribute("id", uuid);
+        return "editar-livro";
+    }
+
+    @PostMapping("/livro/{id}/editar")
+    public String atualizarLivro(@PathVariable("id") String id,
+                                 Model model,
+                                 @ModelAttribute Livro livro) {
+        LivroService ls = context.getBean(LivroService.class);
+        ls.atualizarLivro(livro, id);
+        return "redirect:/livros";
+    }
 }

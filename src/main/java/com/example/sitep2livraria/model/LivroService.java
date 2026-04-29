@@ -21,4 +21,8 @@ public class LivroService {
     public ArrayList<Livro> listarLivros(){
         return livroDAO.listarLivros();
     }
+
+    public void atualizarLivro(Livro novo, String uuid){
+    livroDAO.atualizarLivro(novo, uuid);
+    }
 }

@@ -32,6 +32,9 @@
 
             <p><span th:text="${livro.autor}"></span></p>
           </a>
+          <div class="acoes">
+            <a th:href="@{/livro/{id}/editar(id=${livro.id})}">Editar</a>
+          </div>
         </div>
       </div>
     </main>

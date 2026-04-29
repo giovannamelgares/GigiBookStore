@@ -36,6 +36,23 @@ public class LivroDAO {
         jdbc.update(sql, obj);
     }
 
+    public void atualizarLivro(Livro novo, String uuid){
+    String sql = "UPDATE livro " +
+            "SET titulo = ?, autor = ?, genero = ?, paginas = ?, imagem = ?, sinopse = ? " +
+            "WHERE id = ?::uuid";
+
+    Object[] obj = new Object[7];
+    obj[0] = novo.getTitulo();
+    obj[1] = novo.getAutor();
+    obj[2] = novo.getGenero();
+    obj[3] = novo.getPaginas();
+    obj[4] = novo.getImagem();
+    obj[5] = novo.getSinopse();
+    obj[6] = uuid;
+
+    jdbc.update(sql, obj);
+}
+
     public Livro mostrarLivro(String id){
         String sql = "SELECT * FROM livro WHERE id=?::uuid";
         return Livro.converter(jdbc.queryForMap(sql, id));
