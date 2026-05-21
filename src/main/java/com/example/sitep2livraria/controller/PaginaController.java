@@ -80,6 +80,6 @@ public class PaginaController {
                            Model model) {
     LivroDAO ldao = context.getBean(LivroDAO.class);
     ldao.deletarLivro(id);
-    return "redirect:/listar";
+    return "redirect:/livros";
     }
 }
