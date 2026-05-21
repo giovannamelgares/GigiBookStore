@@ -51,7 +51,12 @@ public class LivroDAO {
     obj[6] = uuid;
 
     jdbc.update(sql, obj);
-}
+    }
+
+    public void deletarLivro(String uuid){
+        String sql = "DELETE FROM livro WHERE id = ?::uuid";
+        jdbc.update(sql, uuid);
+    }
 
     public Livro mostrarLivro(String id){
         String sql = "SELECT * FROM livro WHERE id=?::uuid";

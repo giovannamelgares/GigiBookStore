@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.sitep2livraria.model.Livro;
+import com.example.sitep2livraria.model.LivroDAO;
 import com.example.sitep2livraria.model.LivroService;
 
 @Controller
@@ -72,5 +73,13 @@ public class PaginaController {
         LivroService ls = context.getBean(LivroService.class);
         ls.atualizarLivro(livro, id);
         return "redirect:/livros";
+    }
+
+    @PostMapping("/livro/{id}/deletar")
+    public String deletarLivro(@PathVariable("id") String id,
+                           Model model) {
+    LivroDAO ldao = context.getBean(LivroDAO.class);
+    ldao.deletarLivro(id);
+    return "redirect:/listar";
     }
 }

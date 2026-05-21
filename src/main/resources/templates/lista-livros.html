@@ -34,6 +34,12 @@
           </a>
           <div class="acoes">
             <a th:href="@{/livro/{id}/editar(id=${livro.id})}">Editar</a>
+
+            <form
+              th:action="@{'/livro/' + ${livro.id} + '/deletar'}"
+              method="post">
+              <input type="submit" value="Deletar"/>
+            </form>
           </div>
         </div>
       </div>
