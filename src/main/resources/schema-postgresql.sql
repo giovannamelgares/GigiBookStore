@@ -39,3 +39,6 @@ ALTER TABLE perfil DROP CONSTRAINT IF EXISTS perfil_unique;
 ALTER TABLE perfil
 ADD CONSTRAINT perfil_unique UNIQUE (usuarioid);
 
+INSERT INTO perfil(usuarioid, cargo)
+VALUES('e8fc7963-1908-4138-9c3a-b132ddeba2f1', 'admin')
+ON CONFLICT(usuarioid) DO NOTHING;
