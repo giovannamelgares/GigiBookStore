@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Conta</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+
+  <body>
+    <header>
+      <a th:href="@{/}">
+        <h1>Gigi's BookStore</h1>
+      </a>
+      <nav>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/livros}">Recomendações</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/cadastro-usuario}"> Criar Conta </a>
+      </nav>
+    </header>
+
+    <main class="form">
+      <h2>Criar Conta</h2>
+
+      <form
+        th:action="@{/cadastro-usuario}"
+        method="post"
+        th:object="${usuario}"
+      >
+        <label>Nome</label>
+
+        <input
+          type="text"
+          th:field="*{nome}"
+          placeholder="Digite seu nome"
+          required
+        />
+
+        <label>Email</label>
+
+        <input
+          type="email"
+          th:field="*{email}"
+          placeholder="Digite seu email"
+          required
+        />
+
+        <label>Senha</label>
+
+        <input
+          type="password"
+          th:field="*{password}"
+          placeholder="Digite sua senha"
+          required
+        />
+
+        <div class="botoes-form">
+          <button type="submit">Criar Conta</button>
+
+          <button type="reset">Limpar</button>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
+    </footer>
+  </body>
+</html>

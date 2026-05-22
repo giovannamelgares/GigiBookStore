@@ -14,7 +14,7 @@ import jakarta.annotation.PostConstruct;
 public class LivroDAO {
     @Autowired
     DataSource dataSource;
-    
+
     JdbcTemplate jdbc;
     
     @PostConstruct

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Livro Cadastrado</title>
+    <title>Login</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
   </head>
 
@@ -12,7 +12,6 @@
       <a th:href="@{/}">
         <h1>Gigi's BookStore</h1>
       </a>
-
       <nav>
         <a th:href="@{/}">Início</a>
         <a th:href="@{/livros}">Recomendações</a>
@@ -21,18 +20,36 @@
       </nav>
     </header>
 
-    <main class="section-card">
-      <h2>Livro cadastrado com sucesso!</h2>
+    <main class="form">
+      <h2>Entrar na conta</h2>
 
-      <p>Sua recomendação foi adicionada à Gigi's BookStore.</p>
+      <form th:action="@{/login}" method="post">
+        <label>Email</label>
 
-      <a th:href="@{/livros}">
-        <button>Ver recomendações</button>
-      </a>
+        <input
+          type="email"
+          name="username"
+          placeholder="Digite seu email"
+          required
+        />
 
-      <a th:href="@{/cadastro}">
-        <button>Cadastrar outro livro</button>
-      </a>
+        <label>Senha</label>
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Digite sua senha"
+          required
+        />
+
+        <div class="botoes-form">
+          <button type="submit">Entrar</button>
+
+          <a th:href="@{/cadastro-usuario}">
+            <button type="button">Criar Conta</button>
+          </a>
+        </div>
+      </form>
     </main>
 
     <footer>

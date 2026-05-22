@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.sitep2livraria.model.Livro;
 import com.example.sitep2livraria.model.LivroDAO;
 import com.example.sitep2livraria.model.LivroService;
+import com.example.sitep2livraria.model.Usuario;
+import com.example.sitep2livraria.model.UsuarioService;
 
 @Controller
 public class PaginaController {
@@ -81,5 +83,28 @@ public class PaginaController {
     LivroDAO ldao = context.getBean(LivroDAO.class);
     ldao.deletarLivro(id);
     return "redirect:/livros";
+    }
+
+    //Usuario!
+
+    @GetMapping("/login")
+        public String login(){
+        return "login";
+    }
+
+    @GetMapping("/cadastro-usuario")
+    public String formUsuario(Model model){
+        model.addAttribute("usuario", new Usuario());
+        return "cadastro-usuario";
+    }
+
+    @PostMapping("/cadastro-usuario")
+        public String postUsuario(
+        @ModelAttribute Usuario usuario){
+        UsuarioService us = context.getBean(UsuarioService.class);
+        us.inserirUsuario(usuario);
+        String uuid = us.obterUUID(usuario.getEmail());
+        us.inserirPerfil(uuid);
+        return "redirect:/login";
     }
 }
