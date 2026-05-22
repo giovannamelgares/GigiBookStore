@@ -1,5 +1,9 @@
 <!doctype html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html
+  lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,12 +16,19 @@
       <a th:href="@{/}">
         <h1>Gigi's BookStore</h1>
       </a>
-
       <nav>
-        <a th:href="@{/}">Início</a>
-        <a th:href="@{/livros}">Recomendações</a>
-        <a th:href="@{/login}">Login</a>
-        <a th:href="@{/cadastro-usuario}"> Criar Conta </a>
+        <a th:href="@{/}"> Início </a>
+        <a th:href="@{/livros}"> Recomendações </a>
+        <div sec:authorize="isAnonymous()">
+          <a th:href="@{/login}"> Login </a>
+          <a th:href="@{/cadastro-usuario}"> Criar Conta </a>
+        </div>
+        <div sec:authorize="hasRole('admin')">
+          <a th:href="@{/cadastro}"> Cadastrar Livro </a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+          <a th:href="@{/logout}"> Logout </a>
+        </div>
       </nav>
     </header>
 
@@ -38,8 +49,9 @@
 
             <form
               th:action="@{'/livro/' + ${livro.id} + '/deletar'}"
-              method="post">
-              <input type="submit" value="Deletar"/>
+              method="post"
+            >
+              <input type="submit" value="Deletar" />
             </form>
           </div>
         </div>
