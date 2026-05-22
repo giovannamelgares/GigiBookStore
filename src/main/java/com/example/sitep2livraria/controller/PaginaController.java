@@ -99,7 +99,7 @@ public class PaginaController {
     }
 
     @PostMapping("/cadastro-usuario")
-        public String postUsuario(
+    public String postUsuario(
         @ModelAttribute Usuario usuario){
         UsuarioService us = context.getBean(UsuarioService.class);
         us.inserirUsuario(usuario);

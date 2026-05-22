@@ -48,10 +48,10 @@ public class UsuarioDAO {
     }
 
     public void inserirPerfil(String uuid){
-        String sql = "INSERT INTO perfil(usuarioid,cargo) " + "VALUES (?,?)";
-        Object[] obj = new Object[2];
+        String sql = "INSERT INTO perfil(usuarioid, cargo) " + "VALUES (?, ?)";
+        Object[] obj = new Object[2];  
         obj[0] = uuid;
         obj[1] = "cliente";
-        jdbc.update(sql,obj);
+        jdbc.update(sql, obj);
     }
 }
