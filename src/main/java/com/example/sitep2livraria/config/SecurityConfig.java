@@ -22,7 +22,7 @@ public class SecurityConfig {
         );
 
         manager.setAuthoritiesByUsernameQuery(
-            "SELECT p.usuarioid, p.cargo " + "FROM perfil p " +
+            "SELECT u.email, CONCAT('ROLE_', p.cargo) " + "FROM perfil p " +
             "JOIN usuario u " + "ON p.usuarioid = u.id " + "WHERE u.email = ?"
         );
 
