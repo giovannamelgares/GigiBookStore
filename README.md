@@ -9,7 +9,6 @@ Projeto de livraria online desenvolvido com Java e Spring Boot.
 * Cadastro de livros
 * Edição e exclusão de livros
 * Sistema de favoritos
-* Controle de permissões entre administrador e cliente
 
 ## Regras de negócio
 
