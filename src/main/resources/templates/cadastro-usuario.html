@@ -12,13 +12,16 @@
   </head>
 
   <body>
-    <header>
+       <header>
       <a th:href="@{/}">
         <h1>Gigi's BookStore</h1>
       </a>
       <nav>
         <a th:href="@{/}"> Início </a>
         <a th:href="@{/livros}"> Recomendações </a>
+        <div sec:authorize="isAuthenticated()">
+          <a th:href="@{/favoritos}"> Favoritos </a>
+        </div>
         <div sec:authorize="isAnonymous()">
           <a th:href="@{/login}"> Login </a>
           <a th:href="@{/cadastro-usuario}"> Criar Conta </a>
@@ -31,7 +34,7 @@
         </div>
       </nav>
     </header>
-
+    
     <main class="form">
       <h2>Criar Conta</h2>
 

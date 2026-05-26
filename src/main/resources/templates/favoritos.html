@@ -6,8 +6,11 @@
 >
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detalhes do Livro</title>
+
+    <title>Meus Favoritos</title>
+
     <link rel="stylesheet" th:href="@{/css/style.css}" />
   </head>
 
@@ -16,11 +19,12 @@
       <a th:href="@{/}">
         <h1>Gigi's BookStore</h1>
       </a>
+
       <nav>
         <a th:href="@{/}"> Início </a>
         <a th:href="@{/livros}"> Recomendações </a>
         <div sec:authorize="isAuthenticated()">
-          <a th:href="@{/favoritos}"> Favoritos </a>
+          <a th:href="@{/favoritos}"> Favoritos  </a>
         </div>
         <div sec:authorize="isAnonymous()">
           <a th:href="@{/login}"> Login </a>
@@ -34,33 +38,19 @@
         </div>
       </nav>
     </header>
-    
+
     <main class="livros">
-      <div class="livro-container">
-        <div class="detalhe-container">
-          <img th:src="${livro.imagem}" />
+      <h2>Meus Favoritos</h2>
 
-          <div class="detalhe-info">
-            <h2>Detalhes do Livro</h2>
-
+      <div class="container-livros">
+        <div th:each="livro : ${livros}">
+          <a th:href="@{/livro/{id}(id=${livro.id})}" class="card-livro">
+            <img th:src="${livro.imagem}" />
+            <h3 th:text="${livro.titulo}"></h3>
             <p>
-              <strong>Título:</strong> <span th:text="${livro.titulo}"></span>
+              <span th:text="${livro.autor}"></span>
             </p>
-            <p>
-              <strong>Autor:</strong> <span th:text="${livro.autor}"></span>
-            </p>
-            <p>
-              <strong>Gênero:</strong> <span th:text="${livro.genero}"></span>
-            </p>
-            <p>
-              <strong>Quantidade de páginas:</strong>
-              <span th:text="${livro.paginas}"></span>
-            </p>
-          </div>
-        </div>
-        <div class="sinopse-container">
-          <h2>Sinopse</h2>
-          <p th:text="${livro.sinopse}"></p>
+          </a>
         </div>
       </div>
     </main>

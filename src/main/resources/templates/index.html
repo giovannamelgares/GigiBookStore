@@ -19,6 +19,9 @@
       <nav>
         <a th:href="@{/}"> Início </a>
         <a th:href="@{/livros}"> Recomendações </a>
+        <div sec:authorize="isAuthenticated()">
+          <a th:href="@{/favoritos}"> Favoritos </a>
+        </div>
         <div sec:authorize="isAnonymous()">
           <a th:href="@{/login}"> Login </a>
           <a th:href="@{/cadastro-usuario}"> Criar Conta </a>

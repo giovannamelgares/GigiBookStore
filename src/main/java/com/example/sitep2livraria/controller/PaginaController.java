@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +12,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.sitep2livraria.model.FavoritoDAO;
 import com.example.sitep2livraria.model.Livro;
 import com.example.sitep2livraria.model.LivroDAO;
 import com.example.sitep2livraria.model.LivroService;
 import com.example.sitep2livraria.model.Usuario;
+import com.example.sitep2livraria.model.UsuarioDAO;
 import com.example.sitep2livraria.model.UsuarioService;
 
 @Controller
 public class PaginaController {
     @Autowired
     private ApplicationContext context;
+
+    @Autowired
+    FavoritoDAO fdao;
+
+    @Autowired
+    UsuarioDAO udao;
 
     @GetMapping("/")
     public String index(Model model){
@@ -107,4 +116,26 @@ public class PaginaController {
         us.inserirPerfil(uuid);
         return "redirect:/login";
     }
+
+    //Favoritos!
+    @GetMapping("/favoritar/{id}")
+    public String favoritarLivro(
+        @PathVariable String id, Authentication auth){
+        String email = auth.getName();
+        String usuarioId = udao.obterUUID(email);
+        fdao.favoritar(usuarioId, id);
+        return "redirect:/livros";
+    }
+
+    @GetMapping("/favoritos")
+    public String favoritos(Authentication auth,Model model){
+        String email = auth.getName();
+        String usuarioId = udao.obterUUID(email);
+        ArrayList<Livro> livros =
+            (ArrayList<Livro>)
+            fdao.listarLivrosFavoritos(usuarioId);
+        model.addAttribute("livros", livros);
+        return "favoritos";
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.example.sitep2livraria.config;
 
 import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -36,21 +37,21 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/").permitAll()
-                    .requestMatchers("/css/**").permitAll()
-                    .requestMatchers("/livros").permitAll()
-                    .requestMatchers("/livro/*").permitAll()
-                    .requestMatchers("/login").permitAll()
-                    .requestMatchers("/cadastro-usuario").permitAll()
-                    .requestMatchers("/cadastro").hasRole("admin")
-                    .requestMatchers("/favoritar/**").authenticated()
-                    .anyRequest().authenticated()
+                .requestMatchers("/").permitAll()
+                .requestMatchers("/css/**").permitAll()
+                .requestMatchers("/livros").permitAll()
+                .requestMatchers("/livro/*").permitAll()
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/cadastro-usuario").permitAll()
+                .requestMatchers("/favoritar/**").authenticated()
+                .requestMatchers("/cadastro").hasRole("admin")
+                .requestMatchers("/livro/*/editar").hasRole("admin")
+                .requestMatchers("/livro/*/deletar").hasRole("admin")
+                .anyRequest().authenticated()
             )
-
                 .formLogin(form -> form
                     .loginPage("/login").defaultSuccessUrl("/", true).permitAll()
             )
-
                 .logout(logout -> logout
                     .logoutSuccessUrl("/")
             )

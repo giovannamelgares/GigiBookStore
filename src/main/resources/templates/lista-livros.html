@@ -19,6 +19,9 @@
       <nav>
         <a th:href="@{/}"> Início </a>
         <a th:href="@{/livros}"> Recomendações </a>
+        <div sec:authorize="isAuthenticated()">
+          <a th:href="@{/favoritos}"> Favoritos </a>
+        </div>
         <div sec:authorize="isAnonymous()">
           <a th:href="@{/login}"> Login </a>
           <a th:href="@{/cadastro-usuario}"> Criar Conta </a>
@@ -42,17 +45,31 @@
 
             <h3 th:text="${livro.titulo}"></h3>
 
-            <p><span th:text="${livro.autor}"></span></p>
+            <p>
+              <span th:text="${livro.autor}"></span>
+            </p>
           </a>
-          <div class="acoes">
-            <a th:href="@{/livro/{id}/editar(id=${livro.id})}">Editar</a>
 
-            <form
-              th:action="@{'/livro/' + ${livro.id} + '/deletar'}"
-              method="post"
-            >
-              <input type="submit" value="Deletar" />
-            </form>
+          <div class="acoes">
+            <div sec:authorize="isAuthenticated()">
+              <a
+                class="favorito-btn"
+                th:href="@{/favoritar/{id}(id=${livro.id})}"
+              >
+                ❤️
+              </a>
+            </div>
+
+            <div sec:authorize="hasRole('admin')">
+              <a th:href="@{/livro/{id}/editar(id=${livro.id})}"> Editar </a>
+
+              <form
+                th:action="@{'/livro/' + ${livro.id} + '/deletar'}"
+                method="post"
+              >
+                <input type="submit" value="Deletar" />
+              </form>
+            </div>
           </div>
         </div>
       </div>
