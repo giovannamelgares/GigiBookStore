@@ -41,30 +41,22 @@
 
       <form th:action="@{/livro}" method="post" th:object="${livro}">
         <label>Título</label>
-        <input type="text" th:field="*{titulo}" placeholder="Digite o título" />
+        <input type="text" th:field="*{titulo}" placeholder="Digite o título" required />
 
         <label>Autor</label>
-        <input type="text" th:field="*{autor}" placeholder="Digite o autor" />
+        <input type="text" th:field="*{autor}" placeholder="Digite o autor" required />
 
         <label>Gênero</label>
-        <input type="text" th:field="*{genero}" placeholder="Ex: Romance" />
+        <input type="text" th:field="*{genero}" placeholder="Ex: Romance" required />
 
         <label>Páginas</label>
-        <input
-          type="number"
-          th:field="*{paginas}"
-          placeholder="Quantidade de páginas"
-        />
+        <input type="number" th:field="*{paginas}" placeholder="Quantidade de páginas"  required/>
 
         <label>Imagem (URL)</label>
-        <input type="text" th:field="*{imagem}" placeholder="Link da imagem" />
+        <input type="text" th:field="*{imagem}" placeholder="Link da imagem" required />
 
         <label>Sinopse</label>
-        <textarea
-          rows="5"
-          th:field="*{sinopse}"
-          placeholder="Digite a sinopse do livro"
-        ></textarea>
+        <textarea rows="5" th:field="*{sinopse}" placeholder="Digite a sinopse do livro" required></textarea>
 
         <div class="botoes-form">
           <button type="submit">Adicionar Livro</button>
