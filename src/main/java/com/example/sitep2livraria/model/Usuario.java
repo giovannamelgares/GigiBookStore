@@ -14,12 +14,12 @@ public class Usuario {
     public Usuario(){
     }
 
-    public Usuario(String email, String id, String nome, String password){ //Select!
-        this.email = email;
-        this.id = id;
-        this.nome = nome;
-        this.password = password;
-    }
+    public Usuario(String id, String nome, String email, String password){ //Select!
+    this.id = id;
+    this.nome = nome;
+    this.email = email;
+    this.password = password;
+}
 
     public Usuario(String nome, String email, String password){ //Insert!
         this.nome = nome;
@@ -77,3 +77,5 @@ public class Usuario {
         return aux;
     }
 }
+
+
