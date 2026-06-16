@@ -506,12 +506,6 @@ main.section-card {
   color: var(--marrom-texto);
   border-bottom: 1px solid var(--rosa-suave);
 }
-
-.tabela-usuarios tr:hover {
-  background: var(--rosa-fundo);
-  transition: var(--transition);
-}
-
 .tabela-usuarios tr:last-child td {
   border-bottom: none;
 }
