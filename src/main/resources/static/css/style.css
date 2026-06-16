@@ -524,11 +524,9 @@ main.section-card {
   justify-content: center;
   font-size: 22px;
   color: #f4b400;
-  background: var(--rosa-suave);
   padding: 8px;
   border-radius: 50%;
   transition: var(--transition);
-  box-shadow: 0 4px 12px rgba(244, 180, 0, 0.2);
 }
 
 .acoes {
