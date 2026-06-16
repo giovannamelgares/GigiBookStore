@@ -471,3 +471,47 @@ main.section-card {
 .favorito-btn:hover{
     transform: scale(1.2);
 }
+
+.tabela-usuarios {
+  width: 100%;
+  background: var(--branco);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+  margin-top: 1.5rem;
+  border: 1.5px solid var(--rosa-suave);
+}
+
+.tabela-usuarios table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-usuarios thead {
+  background: linear-gradient(135deg, var(--rosa-forte), var(--rosa-escuro));
+  color: var(--branco);
+}
+
+.tabela-usuarios th {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tabela-usuarios td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: var(--marrom-texto);
+  border-bottom: 1px solid var(--rosa-suave);
+}
+
+.tabela-usuarios tr:hover {
+  background: var(--rosa-fundo);
+  transition: var(--transition);
+}
+
+.tabela-usuarios tr:last-child td {
+  border-bottom: none;
+}
