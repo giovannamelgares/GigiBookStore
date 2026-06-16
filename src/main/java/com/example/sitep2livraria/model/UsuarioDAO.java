@@ -1,5 +1,6 @@
 package com.example.sitep2livraria.model;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -74,4 +75,33 @@ public class UsuarioDAO {
 
         jdbc.update(sql, obj);
     }
+
+    public ArrayList<Usuario> listarUsuariosComDados() {
+
+       String sql = """
+        SELECT u.id, u.nome, u.email, p.cargo,
+        COUNT(f.livroid) AS total_favoritos
+        FROM usuario u
+        LEFT JOIN perfil p ON p.usuarioid = u.id
+        LEFT JOIN favorito f ON f.usuarioid = u.id
+        GROUP BY u.id, p.cargo
+    """;
+
+    java.util.List<java.util.Map<String, Object>> registros =
+            jdbc.queryForList(sql);
+
+    ArrayList<Usuario> lista = new ArrayList<>();
+
+    for (java.util.Map<String, Object> r : registros) {
+
+        Usuario u = new Usuario();
+        u.setId(r.get("id").toString());
+        u.setNome((String) r.get("nome"));
+        u.setEmail((String) r.get("email"));
+        u.setCargo((String) r.get("cargo"));
+        u.setTotalFavoritos(((Number) r.get("total_favoritos")).intValue());
+        lista.add(u);
+    }
+    return lista;
+}
 }

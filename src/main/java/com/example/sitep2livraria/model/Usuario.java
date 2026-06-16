@@ -10,6 +10,8 @@ public class Usuario {
     private String nome;
     private String email;
     private String password;
+    private String cargo;
+    private Integer totalFavoritos;
 
     public Usuario(){
     }
@@ -58,6 +60,22 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getCargo() {
+    return cargo;
+    }
+
+    public void setCargo(String cargo) {
+    this.cargo = cargo;
+    }
+
+    public Integer getTotalFavoritos() {
+    return totalFavoritos;
+    }
+
+    public void setTotalFavoritos(Integer totalFavoritos) {
+    this.totalFavoritos = totalFavoritos;
+    }
 
     public static Usuario converter(Map<String,Object> registro){
         UUID id = (UUID) registro.get("id");
@@ -76,6 +94,7 @@ public class Usuario {
         }
         return aux;
     }
+
 }
 
 

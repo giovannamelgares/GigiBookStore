@@ -1,13 +1,9 @@
 <!doctype html>
-<html
-  lang="pt-br"
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Editar Livro</title>
+    <title>Usuários Cadastrados</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
   </head>
 
@@ -36,40 +32,33 @@
       </nav>
     </header>
 
-    <main class="form">
-      <h2>Editar livro</h2>
-      <form
-        action="#"
-        th:action="@{'/livro/' + ${id} + '/editar'}"
-        method="post"
-        th:object="${livro}"
-      >
-        Título:
-        <input type="text" th:field="*{titulo}" />
-        <br /><br />
+    <main class="livros">
+      <h2>Usuários Cadastrados</h2>
 
-        Autor:
-        <input type="text" th:field="*{autor}" />
-        <br /><br />
+      <div class="container-livros">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Tipo</th>
+              <th>Favoritos</th>
+            </tr>
+          </thead>
 
-        Gênero:
-        <input type="text" th:field="*{genero}" />
-        <br /><br />
-
-        Páginas:
-        <input type="number" th:field="*{paginas}" />
-        <br /><br />
-
-        Imagem:
-        <input type="text" th:field="*{imagem}" />
-        <br /><br />
-
-        Sinopse:
-        <textarea th:field="*{sinopse}"></textarea>
-        <br /><br />
-
-        <input type="submit" value="Editar Livro" />
-      </form>
+          <tbody>
+            <tr th:each="usuario : ${usuarios}">
+              <td th:text="${usuario.nome}"></td>
+              <td th:text="${usuario.email}"></td>
+              <td th:text="${usuario.cargo}"></td>
+              <td th:text="${usuario.totalFavoritos}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
+    <footer>
+      <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
+    </footer>
   </body>
 </html>

@@ -112,9 +112,17 @@ public class PaginaController {
         @ModelAttribute Usuario usuario){
         UsuarioService us = context.getBean(UsuarioService.class);
         us.inserirUsuario(usuario);
-        String uuid = us.obterUUID(usuario.getEmail());
-        us.inserirPerfil(uuid);
         return "redirect:/login";
+    }
+
+    @GetMapping("/usuarios")
+    public String listarUsuarios(Model model){
+        UsuarioService us =
+        context.getBean(UsuarioService.class);
+        ArrayList<Usuario> usuarios =
+        us.listarUsuariosComDados();
+        model.addAttribute("usuarios", usuarios);
+        return "lista-usuarios";
     }
 
     //Favoritos!
@@ -136,6 +144,10 @@ public class PaginaController {
             fdao.listarLivrosFavoritos(usuarioId);
         model.addAttribute("livros", livros);
         return "favoritos";
+    }
+
+    private ArrayList<Usuario> istarUsuariosComDados() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

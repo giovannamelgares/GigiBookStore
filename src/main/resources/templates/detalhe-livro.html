@@ -1,5 +1,9 @@
 <!doctype html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html
+  lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,6 +28,7 @@
         </div>
         <div sec:authorize="hasRole('admin')">
           <a th:href="@{/cadastro}"> Cadastrar Livro </a>
+          <a th:href="@{/usuarios}"> Usuários </a>
         </div>
         <div sec:authorize="isAuthenticated()">
           <a th:href="@{/logout}"> Logout </a>
