@@ -461,17 +461,6 @@ main.section-card {
     text-align: center;
 }
 
-.favorito-btn{
-    text-decoration: none;
-    font-size: 24px;
-    color: #ff4d6d;
-    transition: 0.2s;
-}
-
-.favorito-btn:hover{
-    transform: scale(1.2);
-}
-
 .tabela-usuarios {
   width: 100%;
   background: var(--branco);
@@ -508,4 +497,42 @@ main.section-card {
 }
 .tabela-usuarios tr:last-child td {
   border-bottom: none;
+}
+
+.btn-deletar {
+  background: transparent;
+  color: #c2185b;
+  border: 2px solid #c2185b;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-deletar:hover {
+  background: #c2185b;
+  color: var(--branco);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(194, 24, 91, 0.25);
+}
+
+.favorito-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #f4b400; /* dourado/estrela */
+  background: var(--rosa-suave);
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(244, 180, 0, 0.2);
+}
+
+.favorito-btn:hover {
+  transform: scale(1.15);
+  background: #f4b400;
+  color: var(--branco);
 }

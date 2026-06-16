@@ -44,7 +44,7 @@
         method="post"
         th:object="${usuario}"
       >
-        <label>Nome</label>
+        <label>Nome*</label>
 
         <input
           type="text"
@@ -53,22 +53,22 @@
           required
         />
 
-        <label>Email</label>
+        <label>Email*</label>
 
         <input
           type="email"
           th:field="*{email}"
-          placeholder="Digite seu email"
+          placeholder="seunome@email.com"
           required
         />
 
-        <label>Senha</label>
-
+        <label>Senha*</label>
         <input
           type="password"
           th:field="*{password}"
-          placeholder="Digite sua senha"
+          placeholder="Mínimo 6 caracteres"
           required
+          minlength="6"
         />
 
         <div class="botoes-form">
