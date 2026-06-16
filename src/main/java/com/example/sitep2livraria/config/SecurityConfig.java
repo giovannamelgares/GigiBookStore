@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .requestMatchers("/livro/*").permitAll()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/cadastro-usuario").permitAll()
+                .requestMatchers("/rest/**").permitAll()
                 .requestMatchers("/favoritar/**").authenticated()
                 .requestMatchers("/cadastro").hasRole("admin")
                 .requestMatchers("/livro/*/editar").hasRole("admin")
