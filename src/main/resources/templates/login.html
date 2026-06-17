@@ -37,7 +37,7 @@
     </header>
 
     <main class="form">
-      <h2>Entrar na conta</h2>
+      <h2>Login</h2>
 
       <form th:action="@{/login}" method="post">
         <label>Email</label>
@@ -61,9 +61,10 @@
         <div class="botoes-form">
           <button type="submit">Entrar</button>
 
-          <a th:href="@{/cadastro-usuario}">
-            <button type="button">Criar Conta</button>
-          </a>
+          <p class="cadastro-texto">
+            Não possui uma conta?
+            <a th:href="@{/cadastro-usuario}">Cadastre-se</a>
+          </p>
         </div>
       </form>
     </main>

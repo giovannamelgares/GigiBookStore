@@ -540,3 +540,21 @@ main.section-card {
 .acoes form {
   margin: 0;
 }
+
+.cadastro-texto {
+  text-align: center;
+  margin-top: 1.2rem;
+  color: var(--cinza-texto);
+  font-size: 0.95rem;
+}
+
+.cadastro-texto a {
+  color: var(--rosa-escuro);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.cadastro-texto a:hover {
+  color: var(--rosa-acento);
+  text-decoration: underline;
+}
