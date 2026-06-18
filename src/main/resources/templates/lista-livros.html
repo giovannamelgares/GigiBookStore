@@ -44,7 +44,7 @@
       <h2>Livros Recomendados</h2>
 
       <div class="container-livros">
-        <div th:each="livro : ${livros}">
+        <div th:each="livro : ${livros}" class="livro-wrapper">
           <a th:href="@{/livro/{id}(id=${livro.id})}" class="card-livro">
             <img th:src="${livro.imagem}" />
 
@@ -65,8 +65,14 @@
               </a>
             </div>
 
-            <div sec:authorize="hasRole('admin')">
-              <a th:href="@{/livro/{id}/editar(id=${livro.id})}"> Editar </a>
+            <div sec:authorize="hasRole('admin')" class="admin-acoes">
+              <a
+                th:href="@{/livro/{id}/editar(id=${livro.id})}"
+                class="btn-editar"
+              >
+                <i class="bi bi-pencil-fill"></i>
+                Editar
+              </a>
 
               <form
                 th:action="@{'/livro/' + ${livro.id} + '/deletar'}"
