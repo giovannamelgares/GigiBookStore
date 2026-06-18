@@ -43,10 +43,10 @@
     <main class="livros">
       <h2>Livros Recomendados</h2>
 
+      <div th:if="${mensagem}" class="mensagem-sucesso">
+        <span th:text="${mensagem}"></span>
+      </div>
       <div class="container-livros">
-        <div th:if="${mensagem}" class="mensagem-sucesso">
-          <span th:text="${mensagem}"></span>
-        </div>
         <div th:each="livro : ${livros}" class="livro-wrapper">
           <a th:href="@{/livro/{id}(id=${livro.id})}" class="card-livro">
             <img th:src="${livro.imagem}" />
