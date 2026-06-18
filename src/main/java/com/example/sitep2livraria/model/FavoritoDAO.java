@@ -73,4 +73,17 @@ public class FavoritoDAO {
 
     return quantidade != null && quantidade > 0;
     }
+
+    public void removerFavorito(String usuarioId, String livroId){
+    String sql = """
+        DELETE FROM favorito
+        WHERE usuarioid = ? AND livroid = ?
+    """;
+
+    jdbc.update(
+        sql,
+        UUID.fromString(usuarioId),
+        UUID.fromString(livroId)
+    );
+    }
 }

@@ -595,3 +595,24 @@ main.section-card {
     margin-bottom: 20px;
     font-weight: 600;
 }
+
+.btn-remover-favorito {
+  width: 100%;
+  margin-top: 10px;
+  background: transparent;
+  color: var(--rosa-escuro);
+  border: 2px solid var(--rosa-escuro);
+  padding: 0.7rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: none;
+}
+
+.btn-remover-favorito:hover {
+  background: var(--rosa-escuro);
+  color: var(--branco);
+  transform: translateY(-2px);
+}

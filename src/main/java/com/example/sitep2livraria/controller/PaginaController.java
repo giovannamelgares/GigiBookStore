@@ -162,8 +162,14 @@ public class PaginaController {
         return "favoritos";
     }
 
-    private ArrayList<Usuario> listarUsuariosComDados() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    @PostMapping("/favoritos/remover/{id}")
+    public String removerFavorito(
+    @PathVariable String id,
+    Authentication auth
+    ){
+    String email = auth.getName();
+    String usuarioId = udao.obterUUID(email);
+    fdao.removerFavorito(usuarioId, id);
+    return "redirect:/favoritos";
     }
-
 }

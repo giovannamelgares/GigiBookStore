@@ -43,7 +43,7 @@
       <h2>Meus Favoritos</h2>
 
       <div class="container-livros">
-        <div th:each="livro : ${livros}">
+        <div th:each="livro : ${livros}" class="livro-wrapper">
           <a th:href="@{/livro/{id}(id=${livro.id})}" class="card-livro">
             <img th:src="${livro.imagem}" />
             <h3 th:text="${livro.titulo}"></h3>
@@ -51,6 +51,15 @@
               <span th:text="${livro.autor}"></span>
             </p>
           </a>
+          <form
+            th:action="@{/favoritos/remover/{id}(id=${livro.id})}"
+            method="post"
+            onsubmit="return confirmarRemocao();"
+          >
+            <button type="submit" class="btn-remover-favorito">
+              Remover dos Favoritos
+            </button>
+          </form>
         </div>
       </div>
     </main>
@@ -58,5 +67,14 @@
     <footer>
       <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
     </footer>
+
+    <script>//JavaScript!!!
+      function confirmarRemocao() {
+        return confirm(
+          "Tem certeza que deseja remover este livro dos favoritos?",
+        );
+      }
+    </script>
+    
   </body>
 </html>

@@ -80,6 +80,7 @@
               <form
                 th:action="@{'/livro/' + ${livro.id} + '/deletar'}"
                 method="post"
+                onsubmit="return confirmarExclusao();"
               >
                 <input type="submit" value="Deletar" class="btn-deletar" />
               </form>
@@ -92,5 +93,12 @@
     <footer>
       <p>© 2026 Gigi's BookStore | Um espaço para recomendações de livros :)</p>
     </footer>
+
+    <script> //JavaScript!!! 
+      function confirmarExclusao() {
+        return confirm("Tem certeza que deseja excluir este livro? Esta ação não poderá ser desfeita.");
+      }
+    </script>
+
   </body>
 </html>
