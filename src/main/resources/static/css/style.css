@@ -575,7 +575,6 @@ main.section-card {
 
 .btn-editar,
 .btn-deletar {
-  width: 110px;
   height: 40px;
 
   display: flex;
