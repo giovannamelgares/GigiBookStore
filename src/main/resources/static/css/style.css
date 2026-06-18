@@ -499,7 +499,7 @@ main.section-card {
   border-bottom: none;
 }
 
-.btn-deletar {
+.btn-deletar, .btn-editar {
   background: transparent;
   color: #c2185b;
   border: 2px solid #c2185b;
@@ -511,7 +511,7 @@ main.section-card {
   transition: var(--transition);
 }
 
-.btn-deletar:hover {
+.btn-deletar:hover, .btn-editar:hover {
   background: #c2185b;
   color: var(--branco);
   transform: translateY(-2px);
@@ -570,21 +570,7 @@ main.section-card {
   gap: 10px;
 }
 
-.btn-editar {
-  background: var(--rosa-forte);
-  color: white;
-  padding: 8px 14px;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.btn-editar:hover {
-  background: var(--rosa-escuro);
-}
-
-.btn-deletar {
+.btn-deletar, .btn-editar {
   margin: 0;
 }
 
