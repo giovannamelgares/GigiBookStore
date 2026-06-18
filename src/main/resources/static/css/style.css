@@ -584,3 +584,14 @@ main.section-card {
   text-align: center;
   font-weight: 600;
 }
+
+.mensagem-sucesso {
+    background: #fce4ec;
+    color: #c2185b;
+    border: 2px solid #f8bbd0;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}

@@ -26,11 +26,15 @@ public class FavoritoDAO {
     }
 
     public void favoritar(String usuarioId, String livroId){
-        String sql = "INSERT INTO favorito(usuarioid, livroid) VALUES (?, ?)";
-        Object[] obj = new Object[2];
-        obj[0] = UUID.fromString(usuarioId);
-        obj[1] = UUID.fromString(livroId);
-        jdbc.update(sql, obj);
+    if(jaFavoritou(usuarioId, livroId)){
+        return;
+    }
+    String sql = "INSERT INTO favorito(usuarioid, livroid) VALUES (?, ?)";
+    jdbc.update(
+        sql,
+        UUID.fromString(usuarioId),
+        UUID.fromString(livroId)
+        );
     }
 
     public List<Favorito> listarFavoritos(){
@@ -51,5 +55,22 @@ public class FavoritoDAO {
             livros.add(Livro.converter(reg));
         }
         return livros;
-}
+    }
+
+    public boolean jaFavoritou(String usuarioId, String livroId){
+    String sql = """
+        SELECT COUNT(*)
+        FROM favorito
+        WHERE usuarioid = ? AND livroid = ?
+    """;
+
+    Integer quantidade = jdbc.queryForObject(
+        sql,
+        Integer.class,
+        UUID.fromString(usuarioId),
+        UUID.fromString(livroId)
+    );
+
+    return quantidade != null && quantidade > 0;
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.sitep2livraria.model.FavoritoDAO;
 import com.example.sitep2livraria.model.Livro;
@@ -128,11 +129,26 @@ public class PaginaController {
     //Favoritos!
     @GetMapping("/favoritar/{id}")
     public String favoritarLivro(
-        @PathVariable String id, Authentication auth){
-        String email = auth.getName();
-        String usuarioId = udao.obterUUID(email);
-        fdao.favoritar(usuarioId, id);
+    @PathVariable String id,
+    Authentication auth,
+    RedirectAttributes redirectAttributes){
+
+    String email = auth.getName();
+    String usuarioId = udao.obterUUID(email);
+
+    if(fdao.jaFavoritou(usuarioId, id)){
+        redirectAttributes.addFlashAttribute(
+            "mensagem",
+            "Este livro já está nos seus favoritos."
+        );
         return "redirect:/livros";
+    }
+    fdao.favoritar(usuarioId, id);
+    redirectAttributes.addFlashAttribute(
+        "mensagem",
+        "Livro adicionado aos favoritos!"
+    );
+    return "redirect:/livros";
     }
 
     @GetMapping("/favoritos")
@@ -146,7 +162,7 @@ public class PaginaController {
         return "favoritos";
     }
 
-    private ArrayList<Usuario> istarUsuariosComDados() {
+    private ArrayList<Usuario> listarUsuariosComDados() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
