@@ -566,11 +566,25 @@ main.section-card {
 
 .admin-acoes {
   display: flex;
-  align-items: center;
   gap: 10px;
 }
 
-.btn-deletar, .btn-editar {
+.admin-acoes form {
+  margin: 0;
+}
+
+.btn-editar,
+.btn-deletar {
+  width: 110px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
   margin: 0;
 }
 

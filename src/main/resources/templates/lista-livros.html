@@ -72,9 +72,7 @@
               <a
                 th:href="@{/livro/{id}/editar(id=${livro.id})}"
                 class="btn-editar"
-              >
-                Editar
-              </a>
+              > Editar </a>
 
               <form
                 th:action="@{'/livro/' + ${livro.id} + '/deletar'}"
